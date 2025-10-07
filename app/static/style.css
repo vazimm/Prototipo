@@ -1,0 +1,45 @@
+/* Fundo rosa pêssego */
+body {
+    background-color: #FFDAB9;
+    /* peach puff */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* Card centralizado com tom mais escuro */
+.login-card {
+    background-color: #FFB6A3;
+    /* tom mais escuro do rosa pêssego */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-card .card-title {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #5a2b23;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #5a2b23;
+}
+
+/* Botão de login no canto inferior direito do card */
+.card-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    border-top: none;
+}
+
+.btn-login {
+    margin-right: 0.25rem;
+    /* leve espaço entre botão e borda */
+}
