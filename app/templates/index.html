@@ -10,8 +10,8 @@
         />
         <link rel="stylesheet" href="/static/style.css" />
     </head>
-    <body>
-        <!-- Cabeçalho com logo e título (acima do card) -->
+    <body class="tema-preto">
+        <!-- Cabeçalho com logo e título -->
         <div class="header-wrapper">
             <div class="brand" role="banner">
                 <img
@@ -23,80 +23,76 @@
             </div>
         </div>
 
-        <main class="login-card" role="main" aria-label="Área de login">
-            <h2 class="welcome text-left">Bem vindo</h2>
+        <!-- Formulário unificado -->
+        <div class="content-wrapper">
+            <main class="login-card" role="main" aria-label="Área de login">
+                <h2 class="welcome text-left">Bem vindo</h2>
 
-            {% with messages = get_flashed_messages(with_categories=true) %} {%
-            if messages %}
-            <div class="mb-3">
-                {% for category, msg in messages %}
-                <div class="alert alert-{{ category }}" role="alert">
-                    {{ msg }}
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <div class="mb-3">
+                    {% for category, msg in messages %}
+                    <div class="alert alert-{{ category }}" role="alert">
+                        {{ msg }}
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-            {% endif %} {% endwith %}
+                {% endif %} {% endwith %}
 
-            <form method="post" action="/login" novalidate>
-                <div class="mb-3 form-group">
-                    <label for="email" class="form-label">Email</label>
+                <form
+                    method="post"
+                    action="/login"
+                    class="login-form"
+                    novalidate
+                >
                     <input
                         type="email"
-                        class="form-control"
                         id="email"
                         name="email"
-                        placeholder="seu@exemplo.com"
+                        placeholder="E-mail"
                         required
                     />
-                </div>
-
-                <div class="mb-3 form-group">
-                    <label for="password" class="form-label">Senha</label>
                     <input
                         type="password"
-                        class="form-control"
                         id="password"
                         name="password"
                         placeholder="Senha"
                         required
                     />
-                </div>
+                    <div class="links">
+                        <a href="#" class="forgot-link">Esqueceu sua senha?</a>
+                    </div>
+                    <button type="submit" class="btn btn-access">
+                        Acessar
+                    </button>
+                </form>
+            </main>
 
-                <div class="form-helpers align-items-center">
-                    <a class="forgot-link" href="#">Esqueceu sua senha?</a>
-                    <div class="actions">
-                        <button
-                            type="submit"
-                            class="btn btn-access btn-access-bg"
+            <!-- Rodapé -->
+            <footer class="page-footer below-card">
+                <div class="footer-row">
+                    <div class="footer-left">
+                        &copy; {{ current_year if current_year is defined else
+                        '2025' }} Ultra Gás
+                    </div>
+                    <div class="footer-right">
+                        <a href="#" class="footer-link" data-modal="about"
+                            >Sobre</a
                         >
-                            Acessar
-                        </button>
+                        <span class="footer-sep">|</span>
+                        <a href="#" class="footer-link" data-modal="privacy"
+                            >Privacidade</a
+                        >
+                        <span class="footer-sep">|</span>
+                        <a href="#" class="footer-link" data-modal="contact"
+                            >Contato</a
+                        >
                     </div>
                 </div>
-            </form>
-        </main>
+            </footer>
+        </div>
 
-        <footer class="page-footer below-card">
-            <div class="footer-row">
-                <div class="footer-left">
-                    &copy; {{ current_year if current_year is defined else
-                    '2025' }} Ultra Gás
-                </div>
-                <div class="footer-right">
-                    <a href="#" class="footer-link" data-modal="about">Sobre</a>
-                    <span class="footer-sep">|</span>
-                    <a href="#" class="footer-link" data-modal="privacy"
-                        >Privacidade</a
-                    >
-                    <span class="footer-sep">|</span>
-                    <a href="#" class="footer-link" data-modal="contact"
-                        >Contato</a
-                    >
-                </div>
-            </div>
-        </footer>
-
-        <!-- Modais informativos -->
+        <!-- Modais -->
         <div id="modal-overlay" class="modal-overlay" aria-hidden="true"></div>
 
         <div
